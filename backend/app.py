@@ -18,7 +18,8 @@ from .routers import auth, builder
 app = FastAPI()
 router = APIRouter(prefix="/api/v1")
 origins = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "dotconfig.vercel.app"
 ]
 
 @router.get("/")
