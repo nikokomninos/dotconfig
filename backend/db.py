@@ -24,7 +24,7 @@ load_dotenv()
 
 uri = os.getenv("POSTGRES_URI")
 
-engine = create_engine(uri, echo=True)
+engine = create_engine(uri, echo=True, pool_pre_ping=True, connect_args={"sslmode": "require"})
 
 def create_db_and_tables():
     """
