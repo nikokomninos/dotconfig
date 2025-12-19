@@ -230,7 +230,7 @@ async def login(
         key="access_token",
         value=access_token,
         httponly=True,
-        secure=False,  # True in production
+        secure=True,
         samesite="lax",
         max_age=expiration_mins * 60,
         path="/",
