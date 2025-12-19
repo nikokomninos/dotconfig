@@ -8,6 +8,12 @@ programs, preferences and settings and it'll automatically generate a script to 
 at all. Tools like this exist, but they are all split up and target one operating system. My goal was to prototype an idea for a web-app that hosts
 solutions for all operating systems, and eventually could become a community hub for sharing configurations and configuration files.
 
+It can be found at https://dotconfig.vercel.app/
+
+(Note: I used the free tier of Render to host my backend, which causes the backend to sleep when
+inactive. This makes it seem that functions like logging in do not work, but they will work once
+the backend wakes up after ~30 seconds)
+
 ## Tech Stack And Purpose
 
 - NextJS + TailWindCSS: On the frontend, I used NextJS + TailWindCSS because it is what I am most familiar with, and fits an application like this well.
