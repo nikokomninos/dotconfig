@@ -1,5 +1,5 @@
 import ThemeSwitcher from "./ThemeSwitcher";
-import { cookies } from "next/headers";
+import AuthMenu from "./AuthMenu";
 
 /*
  * Navbar - the navbar component, entirely server-side rendered
@@ -47,78 +47,6 @@ const NavbarButton = ({ route, text }: { route: string; text: string }) => {
     >
       {text}
     </a>
-  );
-};
-
-/*
- * AuthMenu - the right side of the navbar, contains any buttons
- * related to authentication. It is entirely server-side rendered,
- * so there is no flicker when checking the auth state (since auth state
- * is fetched from the backend instead)
- */
-const AuthMenu = async () => {
-  // Grabs the cookie that is storing the JWT
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("access_token")?.value;
-  let isAuthenticated = false;
-
-  // Performs two authentication checks (one based on the existence
-  // of the cookie, and the other is a double-check with the backend
-  // for auth status)
-  //
-  if (accessToken) isAuthenticated = true;
-  else isAuthenticated = false;
-
-  if (accessToken) {
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/status`,
-        {
-          headers: {
-            Cookie: `access_token=${accessToken}`,
-          },
-          cache: "no-store",
-        },
-      );
-
-      isAuthenticated = res.ok;
-    } catch (e) {
-      console.error(e);
-      isAuthenticated = false;
-    }
-  }
-
-  return (
-    <div className="flex flex-row gap-2">
-      {isAuthenticated ? (
-        <form
-          action={`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/logout`}
-          method="POST"
-        >
-          <button
-            type="submit"
-            className="text-xs px-2 py-1 rounded-md bg-(--button) text-foreground-alt hover:bg-(--button)/85 ease-linear duration-75 select-none cursor-pointer"
-          >
-            Logout
-          </button>
-        </form>
-      ) : (
-        <>
-          <a
-            href="/login"
-            className="text-xs px-2 py-1 rounded-md bg-(--button) text-foreground-alt hover:bg-(--button)/85 ease-linear duration-75 select-none"
-          >
-            Login
-          </a>
-          <a
-            href="/register"
-            className="text-xs px-2 py-1 rounded-md bg-(--button) text-foreground-alt hover:bg-(--button)/85 ease-linear duration-75 select-none"
-          >
-            Register
-          </a>
-        </>
-      )}
-    </div>
   );
 };
 
