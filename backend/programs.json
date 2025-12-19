@@ -1,0 +1,38 @@
+[
+  {
+    "name": "vim",
+    "install_command": {
+      "arch": "sudo pacman -S vim"
+    }
+  },
+  {
+    "name": "emacs",
+    "install_command": {
+      "arch": "sudo pacman -S emacs"
+    }
+  },
+  {
+    "name": "htop",
+    "install_command": {
+      "arch": "sudo pacman -S htop"
+    }
+  },
+  {
+    "name": "firefox",
+    "install_command": {
+      "arch": "sudo pacman -S firefox"
+    }
+  },
+  {
+    "name": "fastfetch",
+    "install_command": {
+      "arch": "sudo pacman -S fastfetch"
+    }
+  },
+  {
+    "name": "vlc",
+    "install_command": {
+      "arch": "sudo pacman -S vlc"
+    }
+  }
+]

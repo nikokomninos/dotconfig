@@ -3,7 +3,13 @@
 import { useTheme } from "next-themes";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 
+/*
+ * ThemeSwitcher - a component that switches the frontend
+ * between light and dark theme
+ */
 const ThemeSwitcher = () => {
+  // For easy theme switching for NextJS, I brought
+  // in the next-themes library
   const { theme, setTheme } = useTheme();
 
   return (
@@ -11,7 +17,7 @@ const ThemeSwitcher = () => {
       <button
         type="button"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className="p-1 border border-(--border) rounded-md hover:bg-background-alt ease-linear duration-75 cursor-pointer"
+        className="p-1 border border-(--border) rounded-md bg-background hover:bg-background-alt ease-linear duration-75 cursor-pointer"
       >
         {theme === "light" ? (
           <IoSunnyOutline size={14} />

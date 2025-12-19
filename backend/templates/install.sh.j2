@@ -1,0 +1,20 @@
+{# A Jinja template for generating a bash install script #}
+
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+echo "This script was generated using (.dotconfig)"
+
+echo "Starting installation of programs..."
+
+{% for program in programs %}
+echo "Installing {{ program }}..."
+
+{% for cmd in installs[program] %}
+{{ cmd }}
+
+{% endfor %}
+
+{% endfor %}
+
+echo "All programs installed!"
