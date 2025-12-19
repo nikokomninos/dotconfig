@@ -252,9 +252,9 @@ def logout(response: Response):
 
     # Handled the redirect on the backend so that the navbar
     # could stay rendered server-side
-    response = RedirectResponse(url=frontend_url)
+    #response = RedirectResponse(url=frontend_url)
     response.delete_cookie("access_token", path="/")
-    return response
+    return {"message" : "Logged out successfully"}
 
 @router.get("/status")
 def auth_status(user: Annotated[User, Depends(get_current_user)]):
