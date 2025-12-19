@@ -10,9 +10,22 @@ solutions for all operating systems, and eventually could become a community hub
 
 It can be found at https://dotconfig.vercel.app/
 
-(Note: I used the free tier of Render to host my backend, which causes the backend to sleep when
-inactive. This makes it seem that functions like logging in do not work, but they will work once
-the backend wakes up after ~30 seconds)
+Authentication is a bit finnicky on the frotnend deployment, so it is best to run the app locally:
+
+Frontend:
+
+1. `cd` into `frontend` and install all dependencies `npm install`
+2. Run the frontend with `npm run dev`
+3. Visit `http://localhost:3000`
+
+Backend:
+
+1. `cd` into `backend`
+2. Create a venv and install all dependencies with `pip install -r requirements.txt`
+3. Run the backend with `fastapi dev app.py`
+
+I have included a backup video showcasing all features in case there is trouble with both the production and developments environments
+
 
 ## Tech Stack And Purpose
 
