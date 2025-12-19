@@ -13,23 +13,13 @@ import { redirect } from "next/navigation";
  * they are logged in
  */
 export const pageRequiresAuth = async () => {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("access_token")?.value;
-
-  if (!token) redirect("/login");
-
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/status`,
-      {
-        headers: { Cookie: `access_token=${token}` },
-        cache: "no-store",
-      },
-    );
+    const res = await fetch(`/api/status`, { cache: "no-store" });
 
     if (!res.ok) redirect("/login");
   } catch (e) {
     console.error(e);
+    redirect("/login");
   }
 
   return true;
