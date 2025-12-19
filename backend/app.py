@@ -19,7 +19,7 @@ app = FastAPI()
 router = APIRouter(prefix="/api/v1")
 origins = [
     "http://localhost:3000",
-    "dotconfig.vercel.app"
+    "https://dotconfig.vercel.app"
 ]
 
 @router.get("/")
