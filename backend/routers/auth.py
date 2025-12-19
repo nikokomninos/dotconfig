@@ -155,7 +155,7 @@ def get_current_user(
     try:
         payload = jwt.decode(token, secret_key, algorithms=[hash_algorithm])
     except ExpiredSignatureError:
-        return None
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
     except InvalidTokenError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
