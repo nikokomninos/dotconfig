@@ -19,7 +19,7 @@ export const pageRequiresAuth = async () => {
     if (!res.ok) redirect("/login");
   } catch (e) {
     console.error(e);
-    redirect("/login");
+    //redirect("/login");
   }
 
   return true;
